@@ -1,12 +1,18 @@
-import { api } from "@/api";
 import { createStore } from "vuex";
+
+import { api } from "@/api";
+import { IState } from "@/types/IState";
 import sortModule from "./sortModule";
 
-export default createStore({
-  state: {},
+export const store = createStore<IState>({
+  state: {} as IState,
   getters: {},
   mutations: {},
-  actions: {},
+  actions: {
+    getCharacters: async ({ commit }) => {
+      const response = await api.get("character");
+    },
+  },
   modules: {
     sort: sortModule,
   },

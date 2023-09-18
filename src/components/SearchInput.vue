@@ -7,7 +7,7 @@
       :value="search"
       @input="handleChange"
     />
-    <button @click="handleClear" class="search__button">
+    <button v-if="search !== ''" @click="handleClear" class="search__button">
       <img class="search__img" src="./../assets/close.svg" alt="Clean" />
     </button>
   </div>
@@ -15,17 +15,17 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { useStore } from "vuex";
+import { useStoreTyped } from "@/hooks/useStoreTyped";
 
-const store = useStore();
+const store = useStoreTyped();
 const search = computed(() => {
   return store.state.sort.search;
 });
 
-const handleChange = (e) => {
-  store.commit("setSearch", e.target.value);
+const handleChange = (e: Event) => {
+  store.commit("setSearch", (e.target as HTMLInputElement).value);
 };
-const handleClear = (e) => {
+const handleClear = () => {
   store.commit("clearSearch");
 };
 </script>

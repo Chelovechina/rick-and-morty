@@ -26,5 +26,6 @@ import Search from "./../components/SortComponent.vue";
   font-size: 24px;
   font-weight: 700;
   text-transform: uppercase;
+  text-align: center;
 }
 </style>
