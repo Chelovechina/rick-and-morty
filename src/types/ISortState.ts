@@ -4,4 +4,5 @@ export interface ISortState {
   statuses: string[];
   activeGender: string;
   genders: string[];
+  currentPage: number;
 }

@@ -1,26 +1,32 @@
 <template>
   <div class="form">
     <div class="form__selects">
-      <OptionComponent :options="statuses" title="Status" />
-      <OptionComponent :options="genders" title="Gender" />
+      <OptionComponent :options="sort.statuses" :active-option="$store.state.sort.activeStatus" title="Status" />
+      <OptionComponent :options="sort.genders" :active-option="$store.state.sort.activeGender" title="Gender" />
     </div>
     <SearchInput />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, onBeforeUnmount, watch } from "vue";
+import debounce from "lodash.debounce";
 
 import SearchInput from "./SearchInput.vue";
 import OptionComponent from "./OptionComponent.vue";
 import { useStoreTyped } from "@/hooks/useStoreTyped";
 
 const store = useStoreTyped();
-const statuses = computed(() => {
-  return store.state.sort.statuses;
-});
-const genders = computed(() => {
-  return store.state.sort.genders;
+const sort = computed(() => store.state.sort);
+
+const debouncedWatch = debounce(() => {
+  store.dispatch("getCharacters");
+}, 700);
+
+watch(store.state.sort, debouncedWatch);
+
+onBeforeUnmount(() => {
+  debouncedWatch.cancel();
 });
 </script>
 

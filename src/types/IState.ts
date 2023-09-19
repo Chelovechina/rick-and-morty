@@ -1,15 +1,17 @@
 import { ISortState } from "./ISortState";
 import { ICharacter } from "./ICharacter";
+import { IInfo } from "./IInfo";
+
+export enum StatusEnum {
+  LOADING = "LOADING",
+  FULLFILLED = "FULLFILLED",
+  ERROR = "ERROR",
+}
 
 export interface IState {
-  info: {
-    count: number;
-    next: string | null;
-    pages: number;
-    prev: string | null;
-  };
-  results: ICharacter[];
+  info: IInfo;
+  characters: ICharacter[];
   sort: ISortState;
-  error: Error | null;
-  status: "loading" | "";
+  errorMessage: string;
+  status: StatusEnum;
 }

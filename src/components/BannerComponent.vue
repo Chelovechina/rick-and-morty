@@ -1,13 +1,9 @@
 <template>
-  <div class="banner">
+  <header class="header banner">
     <div class="banner__shadow"></div>
-    <img
-      class="banner__img"
-      src="./../assets/banner.jpg"
-      alt="Rick and Morty banner"
-    />
+    <img class="banner__img" src="./../assets/banner.jpg" alt="Rick and Morty banner" />
     <img class="banner__logo" src="./../assets/logo.png" alt="Logo" />
-  </div>
+  </header>
 </template>
 
 <script setup lang="ts"></script>

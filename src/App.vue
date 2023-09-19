@@ -1,6 +1,13 @@
 <template>
+  <Banner />
   <router-view></router-view>
+  <Footer />
 </template>
+
+<script setup lang="ts">
+import Banner from "./components/BannerComponent.vue";
+import Footer from "./components/FooterComponent.vue";
+</script>
 
 <style>
 * {

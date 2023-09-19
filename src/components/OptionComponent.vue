@@ -1,7 +1,9 @@
 <template>
   <select @change="handleChange" class="select">
-    <option selected value="">{{ props.title }}</option>
-    <option v-for="option in props.options" :value="option" :key="option">
+    <option :selected="props.title === props.activeOption" value="">
+      {{ title }}
+    </option>
+    <option v-for="option in props.options" :selected="option === props.activeOption" :value="option" :key="option">
       {{ option }}
     </option>
   </select>
@@ -10,7 +12,14 @@
 <script setup lang="ts">
 import { useStoreTyped } from "@/hooks/useStoreTyped";
 
-const props = defineProps<{ options: string[]; title: string }>();
+interface IProps {
+  options: string[];
+  title: string;
+  activeOption: string;
+}
+
+const props = defineProps<IProps>();
+
 const store = useStoreTyped();
 
 const handleChange = (e: Event) => {
