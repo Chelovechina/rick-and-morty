@@ -17,4 +17,12 @@ import Character from "./CharacterComponent.vue";
   gap: 30px;
   list-style: none;
 }
+
+.character__link {
+  text-decoration: none;
+}
+
+.character__link:hover {
+  box-shadow: 0 0 15px #000;
+}
 </style>

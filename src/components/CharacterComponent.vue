@@ -1,21 +1,23 @@
 <template>
   <li class="character">
-    <h4 class="character__title">{{ props.character.name }}</h4>
-    <img class="character__img" :src="props.character.image" :alt="props.character.name" />
-    <div class="character__description">
-      <p class="character__text">
-        Status: <span>{{ props.character.status }}</span>
-      </p>
-      <p class="character__text">
-        Species: <span>{{ props.character.species }}</span>
-      </p>
-      <p class="character__text">
-        Origin location: <span>{{ props.character.origin.name }}</span>
-      </p>
-      <p class="character__text">
-        Last known location: <span>{{ props.character.location.name }}</span>
-      </p>
-    </div>
+    <router-link :to="String(character.id)" class="character__link">
+      <h4 class="character__title">{{ props.character.name }}</h4>
+      <img class="character__img" :src="props.character.image" :alt="props.character.name" />
+      <div class="character__description">
+        <p class="character__text">
+          Status: <span>{{ props.character.status }}</span>
+        </p>
+        <p class="character__text">
+          Species: <span>{{ props.character.species }}</span>
+        </p>
+        <p class="character__text">
+          Origin location: <span>{{ props.character.origin.name }}</span>
+        </p>
+        <p class="character__text">
+          Last known location: <span>{{ props.character.location.name }}</span>
+        </p>
+      </div>
+    </router-link>
   </li>
 </template>
 
@@ -29,7 +31,7 @@ const props = defineProps<IProps>();
 </script>
 
 <style scoped>
-.character {
+.character__link {
   display: flex;
   padding: 30px;
   gap: 20px;
@@ -37,6 +39,12 @@ const props = defineProps<IProps>();
   border-radius: 10px;
   background: #202329;
   align-items: center;
+  text-decoration: none;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.character__link:hover {
+  box-shadow: 0 0 15px #202329;
 }
 
 .character__title {

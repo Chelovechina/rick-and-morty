@@ -32,6 +32,12 @@ const handleClick = () => {
   background: #202329;
   border: none;
   color: #fff;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.button:hover {
+  box-shadow: 0 0 10px #202329;
+  cursor: pointer;
 }
 
 .button:disabled {
@@ -39,11 +45,8 @@ const handleClick = () => {
   border: 2px solid #202329;
 }
 
-.button:hover {
-  cursor: pointer;
-}
-
 .button:disabled:hover {
   cursor: inherit;
+  box-shadow: none;
 }
 </style>

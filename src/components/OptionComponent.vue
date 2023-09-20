@@ -48,5 +48,11 @@ const handleChange = (e: Event) => {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.select:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px #202329;
 }
 </style>
