@@ -42,4 +42,12 @@ onBeforeUnmount(() => {
   display: flex;
   gap: 20px;
 }
+
+@media (max-width: 768px) {
+  .form {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
 </style>

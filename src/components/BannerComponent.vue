@@ -38,4 +38,16 @@
   transform: translate(-50%, -50%);
   z-index: 10;
 }
+
+@media (max-width: 768px) {
+  .banner__logo {
+    width: 500px;
+  }
+}
+
+@media (max-width: 600px) {
+  .banner__logo {
+    width: 300px;
+  }
+}
 </style>

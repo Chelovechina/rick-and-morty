@@ -51,4 +51,10 @@
   text-align: center;
   font-size: 16px;
 }
+
+@media (max-width: 992px) {
+  .footer__img {
+    display: none;
+  }
+}
 </style>
