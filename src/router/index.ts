@@ -1,17 +1,23 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import CharacterView from "../views/CharacterView.vue";
+import NotFound from "../views/NotFoundView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "home",
+    name: "Home",
     component: HomeView,
   },
   {
     path: "/:id",
-    name: "character",
+    name: "Character",
     component: CharacterView,
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "Not Found",
+    component: NotFound,
   },
 ];
 

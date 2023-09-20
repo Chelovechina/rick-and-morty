@@ -1,15 +1,21 @@
 <template>
-  <div v-if="$store.state.status === StatusEnum.LOADING" class="">
-    loading...
-  </div>
-
-  <div v-if="$store.state.status === StatusEnum.FULLFILLED">
+  <div>
     <main class="main">
       <div class="container">
         <h1 class="main__title">Characters</h1>
         <Sort />
-        <Characters />
-        <Pagination />
+        <div v-if="$store.state.status === StatusEnum.LOADING" class="">
+          <Loader />
+        </div>
+
+        <div v-if="$store.state.status === StatusEnum.FULLFILLED" class="">
+          <Characters />
+          <Pagination />
+        </div>
+
+        <div v-if="$store.state.status === StatusEnum.ERROR" class="">
+          <Error />
+        </div>
       </div>
     </main>
   </div>
@@ -19,6 +25,8 @@
 import { onMounted } from "vue";
 
 import Sort from "./../components/SortComponent.vue";
+import Loader from "./../components/LoaderComponent.vue";
+import Error from "./../components/ErrorComponent.vue";
 import Characters from "./../components/CharactersList.vue";
 import Pagination from "./../components/PaginationComponent.vue";
 import { StatusEnum } from "./../types/IState";
