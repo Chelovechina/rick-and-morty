@@ -5,6 +5,8 @@ import { ICharacter } from "@/types/ICharacter";
 import { IState, StatusEnum } from "@/types/IState";
 import sortModule from "./sortModule";
 import { IInfo } from "@/types/IInfo";
+import { IEpisode } from "@/types/IEpisode";
+import { IFullCharacter } from "@/types/IFullCharacter";
 
 export const store = createStore<IState>({
   state: {} as IState,
@@ -48,6 +50,9 @@ export const store = createStore<IState>({
     setInfo: (state: IState, info: IInfo) => {
       state.info = info;
     },
+    setCurrentCharacter: (state: IState, character: IFullCharacter) => {
+      state.currentCharacter = character;
+    },
   },
   actions: {
     getCharacters: async ({ state, commit }) => {
@@ -65,6 +70,31 @@ export const store = createStore<IState>({
 
         commit("setCharacters", response.data.results);
         commit("setInfo", response.data.info);
+        commit("setStatus", StatusEnum.FULLFILLED);
+      } catch (e: any) {
+        commit("setStatus", StatusEnum.ERROR);
+        commit("setErrorMessage", e.message);
+      }
+    },
+
+    getSingleCharacter: async ({ commit }, id: number) => {
+      try {
+        commit("setStatus", StatusEnum.LOADING);
+
+        const response = await api.get(`character/${id}`);
+
+        const firstEpisode = await api.get(`episode/1`);
+        const lastEpisode = await api.get(
+          `episode/${response.data.episode.length}`
+        );
+
+        const character = {
+          ...response.data,
+          firstEpisode: firstEpisode.data,
+          lastEpisode: lastEpisode.data,
+        };
+
+        commit("setCurrentCharacter", character);
         commit("setStatus", StatusEnum.FULLFILLED);
       } catch (e: any) {
         commit("setStatus", StatusEnum.ERROR);

@@ -1,24 +1,22 @@
 <template>
-  <div>
-    <main class="main">
-      <div class="container">
-        <h1 class="main__title">Characters</h1>
-        <Sort />
-        <div v-if="$store.state.status === StatusEnum.LOADING" class="">
-          <Loader />
-        </div>
-
-        <div v-if="$store.state.status === StatusEnum.FULLFILLED" class="">
-          <Characters />
-          <Pagination />
-        </div>
-
-        <div v-if="$store.state.status === StatusEnum.ERROR" class="">
-          <Error />
-        </div>
+  <main class="main">
+    <div class="container">
+      <h1 class="main__title">Characters</h1>
+      <Sort />
+      <div v-if="$store.state.status === StatusEnum.LOADING">
+        <Loader />
       </div>
-    </main>
-  </div>
+
+      <div v-if="$store.state.status === StatusEnum.FULLFILLED">
+        <Characters />
+        <Pagination />
+      </div>
+
+      <div v-if="$store.state.status === StatusEnum.ERROR">
+        <Error />
+      </div>
+    </div>
+  </main>
 </template>
 
 <script setup lang="ts">

@@ -27,4 +27,15 @@ body {
   padding: 0 20px;
   margin: 0 auto;
 }
+
+.character__text {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.character__text span {
+  font-weight: 400;
+}
 </style>

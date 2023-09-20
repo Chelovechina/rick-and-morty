@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import Character from "./CharacterComponent.vue";
+import Character from "./CharacterCard.vue";
 </script>
 
 <style scoped>

@@ -1,6 +1,7 @@
 import { ISortState } from "./ISortState";
 import { ICharacter } from "./ICharacter";
 import { IInfo } from "./IInfo";
+import { IFullCharacter } from "./IFullCharacter";
 
 export enum StatusEnum {
   LOADING = "LOADING",
@@ -14,4 +15,5 @@ export interface IState {
   sort: ISortState;
   errorMessage: string;
   status: StatusEnum;
+  currentCharacter: IFullCharacter;
 }
